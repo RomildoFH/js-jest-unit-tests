@@ -12,26 +12,19 @@
 */
 
 const average = (array) => {
-  const divisor = array.length;
-  if(divisor < 1) {
+  // const divisor = array.length;
+  if (array.length < 1) {
     return (undefined);
   }
-  let dividendo = 0;
-  let kindIndex = 'number'
-  for (let index in array) {
-    if (typeof (array[index]) === 'number') {
-      dividendo += array[index];
-    } else {
-      kindIndex = 'not number'
+  let soma = 0;
+  for (let index = 0; index < array.length; index += 1) {
+    if (typeof (array[index]) !== 'number') {
+      return (undefined);
     }
+    soma += array[index];
   }
-  if(kindIndex === 'number') {
-    return (Math.round(dividendo / divisor));
-  } else {
-    return (undefined);
-  }
+  return (Math.round(soma / array.length));
 };
-
 console.log(average([-11, -5, 2]));
 
 module.exports = average;
