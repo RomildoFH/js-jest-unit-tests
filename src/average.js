@@ -12,18 +12,18 @@
 */
 
 const average = (array) => {
-  // const divisor = array.length;
-  if (array.length < 1) {
+  const divisor = array.length;
+  if (divisor < 1) {
     return (undefined);
   }
   let soma = 0;
-  for (let index = 0; index < array.length; index += 1) {
+  for (let index = 0; index < divisor; index += 1) {
     if (typeof (array[index]) !== 'number') {
       return (undefined);
     }
     soma += array[index];
   }
-  return (Math.round(soma / array.length));
+  return (Math.round(soma / divisor));
 };
 console.log(average([-11, -5, 2]));
 
