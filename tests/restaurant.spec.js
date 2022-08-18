@@ -138,7 +138,13 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // objetoRetornado.order('coxinha');
     // objetoRetornado.consumption // Retorno: ['coxinha', 'agua', 'coxinha']
     // ```
-
+  it("TESTE 7: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.", () => {
+    const objetoRetornado = createMenu();
+    objetoRetornado.order('coxinha');
+    objetoRetornado.order('agua');
+    objetoRetornado.order('coxinha');
+    expect(objetoRetornado.consumption).toEqual(['coxinha', 'agua', 'coxinha']);
+  });
     // Agora faça o TESTE 8 deste arquivo.
     // --------------------------------------------------------------------------------------
 
@@ -149,6 +155,12 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     // objetoRetornado.order('coxinha');
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
     // ```
-  
+  it("TESTE 8: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`", () => {
+    const objetoRetornado = createMenu({ food: { coxinha: 4.00}, drink: { agua: 2.00 } });
+    objetoRetornado.order('coxinha');
+    objetoRetornado.order('agua');
+    objetoRetornado.order('coxinha');
+    expect(objetoRetornado.pay()).toBeCloseTo(11.00);
+  });
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
 });
