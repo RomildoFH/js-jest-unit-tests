@@ -94,7 +94,14 @@
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
 const createMenu = (objeto) => {
-  const menu = { fetchMenu: () => objeto };
+  const menu = { 
+    fetchMenu: () => objeto,
+    consumption: [],  
+    order: (consumo) => {
+      menu.consumption.push(consumo)
+      return (menu.consumption)
+    },
+  };
   return (menu);
 };
 const objetoRetornado = createMenu({ food: {coxinha: 6.99}, drink: {água: 2.00} });
@@ -103,4 +110,6 @@ console.log(typeof(objetoRetornado));
 console.log(Object.keys(objetoRetornado));
 console.log(typeof(objetoRetornado['fetchMenu']));
 console.log(objetoRetornado.fetchMenu());
+console.log(objetoRetornado.consumption);
+console.log(objetoRetornado.order("coxinha"));
 module.exports = createMenu;
